@@ -1,9 +1,12 @@
 package com.demo.service.impl;
 
+import org.springframework.stereotype.Component;
+
 import com.demo.model.calculator.CalculatorRequest;
 import com.demo.model.calculator.CalculatorResponse;
 import com.demo.service.CalculatorService;
 
+@Component
 public class CalculatorServiceImpl implements CalculatorService {
 
 	@Override
