@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.demo.model.Employee;
 
@@ -49,9 +50,9 @@ public class EmployeeLists {
 		return empMap;
 	}
 	
-	public Map<String, Employee> getEmpDetailsUsingStream() {
+	public static Map<String, List<Employee>> getEmpDetailsUsingStream() {
 		
-		return null;
+		return empList.stream().collect(Collectors.groupingBy(Employee::getCity));
 	}
 	
 	public static void main(String[] args) {
@@ -61,6 +62,8 @@ public class EmployeeLists {
 			System.out.println(entry.getKey() + " : " + entry.getValue().size());
 			System.out.println("Details : " + entry.getValue());
 		}
+		
+		System.out.println("Using stream: "+getEmpDetailsUsingStream() );
 		
 	}
 }
