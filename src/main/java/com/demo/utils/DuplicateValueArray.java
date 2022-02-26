@@ -1,19 +1,24 @@
 package com.demo.utils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class DuplicateValueArray {
 
 	public static boolean hasDuplicates(Integer arr[], int size) {
 
-		String distinct = "";
+		Map<Integer, Integer> duplicateCount = new HashMap<>();
 
 		for (int i = 0; i < size; i++) {
 
-			if (distinct.contains("," + String.valueOf(arr[i]) + ",")) {
+			int key = arr[i];
+			if(duplicateCount.containsKey(key)) {
 				return true;
-			} else {
-				distinct = distinct + "," + arr[i] + ",";
+			}
+			else {
+				int count = duplicateCount.getOrDefault(key, 0);
+				duplicateCount.put(key, ++count);
 			}
 		}
 		return false;
