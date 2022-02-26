@@ -34,8 +34,7 @@ public class EmployeeLists {
 			
 			
 			if(empMap.containsKey(key)) {
-				List<Employee> employee = new ArrayList<>();
-				employee = empMap.get(key);
+				List<Employee> employee = empMap.get(key);
 				employee.add(emp);
 				empMap.put(key, employee);
 			}

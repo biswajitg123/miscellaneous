@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.demo.model.Album;
 
@@ -33,8 +34,7 @@ public class AlbumUtil {
 			
 			if(albumMap.containsKey(key)) {
 				
-				List<String> albums = new ArrayList<>();
-				albums = albumMap.get(key);
+				List<String> albums = albumMap.get(key);
 				albums.add(album.getAlbum());
 				albumMap.put(key, albums);
 			}
@@ -50,9 +50,9 @@ public class AlbumUtil {
 		return albumMap;
 	}
 	
-	public static Map<String, List<Album>> getEmpDetailsUsingStream() {
+	public static Map<String, List<Album>> getAblumListByArtist() {
 		
-		return null;
+		return list.stream().collect(Collectors.groupingBy(Album::getArtist));
 	}
 	
 	public static void main(String[] args) {
@@ -63,5 +63,6 @@ public class AlbumUtil {
 			System.out.println("Albums : " + entry.getValue());
 		}
 		
+		System.out.println("Using stream: "+getAblumListByArtist() );
 	}
 }
