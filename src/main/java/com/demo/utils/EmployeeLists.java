@@ -24,24 +24,25 @@ public class EmployeeLists {
 		empList.add(new Employee("Madan","Pune"));
 	}
 	
-	public static Map<String , List<Employee>> getEmpDetails()  {
+	public static Map<String, List<Employee>> getEmpDetails()  {
 		
-		Map<String , List<Employee>> empMap = new HashMap<>();
+		Map<String, List<Employee>> empMap = new HashMap<>();
 		
 		for(Employee emp : empList) {
 			
 			String key = emp.getCity();
-			List<Employee> employee = new ArrayList<>();
-			employee.add(emp);
+			
 			
 			if(empMap.containsKey(key)) {
-				
+				List<Employee> employee = new ArrayList<>();
 				employee = empMap.get(key);
 				employee.add(emp);
 				empMap.put(key, employee);
 			}
 			
-			else {				
+			else {	
+				List<Employee> employee = new ArrayList<>();
+				employee.add(emp);
 				empMap.put(key, employee);
 			}
 		
@@ -57,7 +58,7 @@ public class EmployeeLists {
 	
 	public static void main(String[] args) {
 		
-		Map<String , List<Employee>> empMap = getEmpDetails();
+		Map<String, List<Employee>> empMap = getEmpDetails();
 		for (Map.Entry<String, List<Employee>> entry : empMap.entrySet()) {
 			System.out.println(entry.getKey() + " : " + entry.getValue().size());
 			System.out.println("Details : " + entry.getValue());
