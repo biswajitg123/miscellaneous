@@ -50,9 +50,10 @@ public class AlbumUtil {
 		return albumMap;
 	}
 	
-	public static Map<String, List<Album>> getAblumListByArtist() {
+	public static Map<String, List<String>> getAblumListByArtist() {
 		
-		return list.stream().collect(Collectors.groupingBy(Album::getArtist));
+		return list.stream().collect(
+				Collectors.groupingBy(Album::getArtist, Collectors.mapping(Album::getAlbum, Collectors.toList())));
 	}
 	
 	public static void main(String[] args) {
